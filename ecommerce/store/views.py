@@ -1,10 +1,11 @@
 from django.shortcuts import render
-from .models import FoodItems
+from .models import FoodItems, Pictures
 # Create your views here.
 
 def store(request):
     items = FoodItems.objects.all()
-    return render(request,'store/store.html', {'items' : items})
+    images = Pictures.objects.all()
+    return render(request,'store/store.html', {'items' : items, 'images':images})
 
 def cart(request):
     context = {}
