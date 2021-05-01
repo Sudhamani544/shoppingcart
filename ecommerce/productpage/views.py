@@ -3,14 +3,14 @@ from store.models import FoodItems
 from store import views
 # Create your views here.
 
-def muruku(request):
-    item = FoodItems.objects.get(name='muruku')
+def chicken_pesto(request):
+    item = FoodItems.objects.get(name='chicken_pesto')
     return render(request,'productpage/productpage.html', {'item' : item})
 
-def BesanLadoo(request):
-    item = FoodItems.objects.get(name='BesanLadoo')
+def margheritta(request):
+    item = FoodItems.objects.get(name='margheritta')
     return render(request,'productpage/productpage.html', {'item' : item})
 
-def PeanutChikki(request):
-    item = FoodItems.objects.get(name='PeanutChikki')
+def mushroompizza(request):
+    item = FoodItems.objects.get(name='mushroompizza')
     return render(request,'productpage/productpage.html', {'item' : item})
