@@ -7,7 +7,6 @@
       <div class="col-lg-4">
         <div class="thumbnail">
           <img class="thumbnail" src="{{item.image.url}}" alt="">
-          <!-- <a href="{{ item.get_absolute_url }}" -->
           {% if item.offer %}
             <div class="top-left">offer</div>
           {% endif %}
@@ -15,10 +14,8 @@
 
       <div class="box-element product">
         <h6><strong>{{item.name}}</strong></h6>
-        <!-- <h6>{{item.desc}}</h6> -->
         <h6>no:of pieces {{item.piece}}</h6>
         <hr>
-        <!-- {% url 'addtocart' %}{{item.slug}}/ -->
         <button  class="btn btn-outline-secondary add-btn">Add to Cart</button>
 				<a class="btn btn-outline-success" href="productpage/{{item.name}}">View</a>
         {% if item.offer %}
