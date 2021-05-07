@@ -3,16 +3,13 @@
 {% block content %}
 
   <div class="row">
-    {% for item in items%}
+    {% for item in object_list %}
       <div class="col-lg-4">
         <div class="thumbnail">
-          {% for i in images%}
-          {% if item.name == i.name %}
-          <img class="thumbnail" src="{{i.image.url}}" alt="">
-          {% endif %}
-          {% endfor %}
+          <img class="thumbnail" src="{{item.image.url}}" alt="">
+          <!-- <a href="{{ item.get_absolute_url }}" -->
           {% if item.offer %}
-            <div class="spec_offer text-center"><a href="#">special offer</a></div>
+            <div class="top-left">offer</div>
           {% endif %}
         </div>
 
@@ -21,9 +18,19 @@
         <!-- <h6>{{item.desc}}</h6> -->
         <h6>no:of pieces {{item.piece}}</h6>
         <hr>
+        <!-- {% url 'addtocart' %}{{item.slug}}/ -->
         <button  class="btn btn-outline-secondary add-btn">Add to Cart</button>
 				<a class="btn btn-outline-success" href="productpage/{{item.name}}">View</a>
-				<h4 style="display: inline-block; float: right"><strong>${{item.price}}</strong></h4>
+        {% if item.offer %}
+        <h5 style="display: inline-block; float: right">
+          <span class="mr-1">
+            <del>${{item.price}}</del>
+          </span>
+          <span>${{item.discountprice}}</span>
+        {% else %}
+          <h5 style="display: inline-block; float: right">${{item.price}}</h5>
+        {% endif %}
+				<!-- <h4 style="display: inline-block; float: right"><strong>${{item.price}}</strong></h4> -->
       </div>
     </div>
     {% endfor %}
