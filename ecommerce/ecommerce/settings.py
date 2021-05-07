@@ -28,7 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '(seom0e+=8wd0#r9$r$csb9kiq4@$%l3iprh)-=^0f)qdh%6(t'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['sudhaweb.herokuapp.com','127.0.0.1']
 
@@ -86,8 +86,8 @@ WSGI_APPLICATION = 'ecommerce.wsgi.application'
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
 #         'NAME'  : 'mysite',
-#         'USER'  : 'postgres',
-#         'PASSWORD' : 'Sudha#123',
+#         'USER'  : '',
+#         'PASSWORD' : '',
 #         'HOST' : 'localhost'
 #     }
 # }
