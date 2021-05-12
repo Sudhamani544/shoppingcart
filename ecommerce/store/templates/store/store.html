@@ -18,13 +18,12 @@
         <!-- <h6>{{item.desc}}</h6> -->
         <h6>no:of pieces {{item.piece}}</h6>
         <hr>
-        <!-- {% url 'addtocart' %}{{item.slug}}/ -->
-        <button  class="btn btn-outline-secondary add-btn">Add to Cart</button>
+        <button  class="btn btn-outline-secondary add-btn" >Add to Cart</button>
 				<a class="btn btn-outline-success" href="productpage/{{item.name}}">View</a>
         {% if item.offer %}
         <h5 style="display: inline-block; float: right">
           <span class="mr-1">
-            <del>${{item.price}}</del>
+            <del>${{item.price|floatformat:2}}</del>
           </span>
           <span>${{item.discountprice}}</span>
         {% else %}
