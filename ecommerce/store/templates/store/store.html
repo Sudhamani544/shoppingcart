@@ -16,7 +16,7 @@
         <h6><strong>{{item.name}}</strong></h6>
         <h6>no:of pieces {{item.piece}}</h6>
         <hr>
-        <button  class="btn btn-outline-secondary add-btn" >Add to Cart</button>
+        <button data-product={{item.id}} data-action="add" class="btn btn-outline-secondary add-btn update-cart" >Add to Cart</button>
 				<a class="btn btn-outline-success" href="productpage/{{item.name}}">View</a>
         {% if item.offer %}
         <h5 style="display: inline-block; float: right">
