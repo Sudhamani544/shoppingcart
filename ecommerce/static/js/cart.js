@@ -10,7 +10,30 @@ for(var i = 0; i < updateBtns.length; i++){
     if(user == 'AnonymousUser'){
       console.log("user not logged in")
     }else{
-      console.log("user is logged in, sending data.. ")
+      updateUserOrder(productId,action)
     }
   })
+  function updateUserOrder(productId, action){
+    console.log("user is logged in, sending data.. ")
+
+    var url='/update_item/'
+
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'content-Type':'applicatio/json',
+        'X-CSRFToken':csrftoken,
+      },
+      body: JSON.stringify({'productId':productId, 'action':action})
+    })
+    .then((response) => {
+      return response.json()
+    })
+    .then((data) => {
+      console.log('data:', data)
+      location.reload()
+    })
+
+
+  }
 }
