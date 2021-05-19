@@ -3,6 +3,7 @@ from .models import *
 from django.http import JsonResponse
 from django.views.generic import ListView, DetailView
 import json
+import datetime
 # Create your views here.
 
 def store(request):
@@ -69,6 +70,31 @@ def updateitem(request):
         orderItem.delete()
 
     return JsonResponse('item was added', safe=False)
+
+def processOrder(request):
+    transaction_id = datetime.datetime.now().timestamp()
+    data = json.loads(request.body)
+
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        order, created = Order.objects.get_or_create(customer=customer, complete=False)
+        total = float(data['form']['total'])
+        order.transaction_id = transaction_id
+
+        if total == order.get_cart_total:
+            order.complete = True
+        order.save()
+
+        ShippingAddress.objects.create(
+            customer = customer,
+            order = order,
+            address = data['shipping']['address'],
+            city = data['shipping']['city'],
+            state = data['shipping']['state'],
+            zipcode = data['shipping']['zipcode'],
+
+        )
+    return JsonResponse('Payment complete!', safe=False)
 
 # class StoreView(ListView):
 #     model=FoodItems
